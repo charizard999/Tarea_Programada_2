@@ -8,6 +8,7 @@ Persona::Persona(){
 	this->tipoEmpleado = 0;
 	this->idSupervisor = 0;
 }
+//Constructor con parametros
 Persona::Persona(int idEmpleado, string nombre, string apellido, string correo,
 	int tipoEmpleado, int idSupervisor) {
 	this->idEmpleado = idEmpleado;
