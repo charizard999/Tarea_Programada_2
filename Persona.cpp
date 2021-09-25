@@ -26,6 +26,11 @@ Persona::Persona(int idEmpleado, string nombre, string apellido, string correo,
 	this->horasLaboradas = horasLaboradas;
 }
 
+void Persona::obtenerPersona() {
+
+
+}
+	
 
 void Persona::setIdEmpleado(int idEmpleado) {
 	this->idEmpleado = idEmpleado;

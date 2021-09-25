@@ -20,6 +20,8 @@ public:
 		int tipoEmpleado, int idSupervisor, double pagoMensualBruto,
 		double montoxHora, int horasLaboradas);
 
+	void obtenerPersona();
+
 	void setIdEmpleado(int idEmpleado);
 	int getIdEmpleado();
 
