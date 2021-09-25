@@ -7,16 +7,23 @@ Persona::Persona(){
 	this->correo = "";
 	this->tipoEmpleado = 0;
 	this->idSupervisor = 0;
+	this->pagoMensualBruto = 0;
+	this->montoxHora = 0;
+	this->horasLaboradas = 0;
 }
 //Constructor con parametros
 Persona::Persona(int idEmpleado, string nombre, string apellido, string correo,
-	int tipoEmpleado, int idSupervisor) {
+	int tipoEmpleado, int idSupervisor, double pagoMensualBruto,double montoxHora, int horasLaboradas) {
+	
 	this->idEmpleado = idEmpleado;
 	this->nombre = nombre;
 	this->apellido = apellido;
 	this->correo = correo;
 	this->tipoEmpleado = tipoEmpleado;
 	this->idSupervisor = idSupervisor;
+	this->pagoMensualBruto = pagoMensualBruto;
+	this->montoxHora = montoxHora;
+	this->horasLaboradas = horasLaboradas;
 }
 
 
@@ -61,3 +68,23 @@ void Persona::setIdSupervisor(int idSupervisor) {
 int Persona::getIdSupervisoro() {
 	return idSupervisor;
 }
+
+void Persona::setPagoMensualBruto(double pagoMensualBruto) {
+	this->pagoMensualBruto = pagoMensualBruto;
+}
+double Persona::getPagoMensualBruto() {
+	return pagoMensualBruto;
+}
+
+void Persona::setMontoxHora(double montoxHora) {
+	this->montoxHora = montoxHora;
+}
+double Persona::getMontoxHora() {
+	return montoxHora;
+}
+
+void Persona::setHorasLaboradas(int horasLaboradas) {
+	this->horasLaboradas = horasLaboradas;
+}
+int Persona::getHorasLaboradas() {
+	return horasLaboradas;
