@@ -27,7 +27,31 @@ Persona::Persona(int idEmpleado, string nombre, string apellido, string correo,
 }
 
 void Persona::obtenerPersona() {
-
+	vector<Persona> personas;
+	string cadena;
+	string valor;
+	/*char cadena[128];*/
+	char caracter;
+	
+	ifstream fe("../Tarea_Programada_2/Personas.txt");
+	
+	while (!fe.eof()) {
+		fe >> cadena;
+		for (int i = 0; i < cadena.length(); i++) {
+			caracter = cadena[i];
+			if (caracter != ' ') {
+				valor = valor + caracter;
+			
+			}
+			else {
+				valor = " ";
+			}
+			cout << "Valor: " << valor << endl;
+		}	
+		cout << cadena << endl;
+		
+	}
+	fe.close();
 
 }
 	
@@ -93,3 +117,4 @@ void Persona::setHorasLaboradas(int horasLaboradas) {
 }
 int Persona::getHorasLaboradas() {
 	return horasLaboradas;
+}
