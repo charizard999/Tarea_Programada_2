@@ -28,29 +28,100 @@ Persona::Persona(int idEmpleado, string nombre, string apellido, string correo,
 
 void Persona::obtenerPersona() {
 	vector<Persona> personas;
-	string cadena;
+
 	string valor;
-	/*char cadena[128];*/
+	int contador = 1;
+	int cont2 = 1;
 	char caracter;
-	
+
 	ifstream fe("../Tarea_Programada_2/Personas.txt");
-	
+
+	vector<string> vLineas;
+	string palabra;
+	string linea = "";
+
 	while (!fe.eof()) {
-		fe >> cadena;
-		for (int i = 0; i < cadena.length(); i++) {
-			caracter = cadena[i];
+		fe >> palabra;
+
+		if (contador < 6) {
+			linea = linea + palabra + " ";
+			contador = contador + 1;
+		}
+		else if (contador == 6) {
+			linea = linea + palabra + " ";
+			vLineas.push_back(linea);
+			contador = 1;
+			linea = "";
+		}
+
+	}
+	for (int i = 0; i < vLineas.size(); i++) {
+		//cout << "Persona #" << i+1 << endl;
+		Persona persona = Persona();
+
+		string linea = vLineas[i];
+		for (int j = 0; j < linea.size(); j++) {
+			caracter = linea[j];
 			if (caracter != ' ') {
 				valor = valor + caracter;
-			
+
 			}
 			else {
-				valor = " ";
+
+				if (cont2 == 1) {
+					cout << "entra" << endl;
+					persona.setIdEmpleado(atoi(valor.c_str()));
+
+				}
+				else if (cont2 == 2) {
+					persona.setNombre(valor);
+
+				}
+				else if (cont2 == 3) {
+					persona.setApellido(valor);
+
+				}
+				else if (cont2 == 4) {
+					persona.setCorreo(valor);
+
+				}
+				else if (cont2 == 5) {
+					persona.setTipoEmpleado(atoi(valor.c_str()));
+
+				}
+				else if (cont2 == 6) {
+					persona.setIdSupervisor(atoi(valor.c_str()));
+					cont2 = 0;
+				}
+				cont2 = cont2 + 1;
+				valor = "";
+
 			}
-			cout << "Valor: " << valor << endl;
-		}	
-		cout << cadena << endl;
-		
+
+
+
+		}
+
+		personas.push_back(persona);
 	}
+
+
+	cout << endl << endl;
+	cout << "PERSONAS" << endl;
+	for (int z = 0; z < personas.size(); z++) {
+		if (z == 0) {
+			personas[z].setIdEmpleado(1);
+		}
+
+		cout << "ID EMPLEADO: " << personas[z].idEmpleado << endl;
+		cout << "NOMBRE: " << personas[z].nombre << endl;
+		cout << "APELLIDO: " << personas[z].apellido << endl;
+		cout << "CORREO: " << personas[z].correo << endl;
+		cout << "TIPO EMPLEADO: " << personas[z].tipoEmpleado << endl;
+		cout << "ID SUPERVISOR: " << personas[z].idSupervisor << endl;
+		cout << endl << endl;
+	}
+
 	fe.close();
 
 }
