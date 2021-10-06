@@ -26,8 +26,8 @@ Persona::Persona(int idEmpleado, string nombre, string apellido, string correo,
 	this->horasLaboradas = horasLaboradas;
 }
 
-void Persona::obtenerPersona() {
-	vector<Persona> personas;
+
+void Persona::cargarPersona() {
 
 	string valor;
 	int contador = 1;
@@ -69,7 +69,7 @@ void Persona::obtenerPersona() {
 			else {
 
 				if (cont2 == 1) {
-					cout << "entra" << endl;
+					/*cout << "entra" << endl;*/
 					persona.setIdEmpleado(atoi(valor.c_str()));
 
 				}
@@ -95,17 +95,161 @@ void Persona::obtenerPersona() {
 				}
 				cont2 = cont2 + 1;
 				valor = "";
+			}
+		}
+		personas.push_back(persona);
+	}
+/*cout << endl << endl;
+	cout << "PERSONAS" << endl;
+	for (int z = 0; z < personas.size(); z++) {
+		if (z == 0) {
+			personas[z].setIdEmpleado(1);
+		}
+
+		cout << "ID EMPLEADO: " << personas[z].idEmpleado << endl;
+		cout << "NOMBRE: " << personas[z].nombre << endl;
+		cout << "APELLIDO: " << personas[z].apellido << endl;
+		cout << "CORREO: " << personas[z].correo << endl;
+		cout << "TIPO EMPLEADO: " << personas[z].tipoEmpleado << endl;
+		cout << "ID SUPERVISOR: " << personas[z].idSupervisor << endl;
+		cout << endl << endl;
+	}*/
+
+	
+
+	fe.close();
+
+}
+
+
+void Persona::actualizarMontoBruto() {
+	string valor;
+	int cont2 = 1;
+	char caracter;
+
+	vector<string>vLineasNomina;
+	string palabra = "";
+	int contador = 1;
+	string linea = "";
+
+	ifstream fe("../Tarea_Programada_2/Nomina.txt");
+	
+	while (!fe.eof()) {
+		fe >> palabra;
+		if (contador < 2) {
+			linea = linea + palabra + " ";
+			contador = contador + 1;
+		}
+		else if (contador == 2) {
+			linea = linea + palabra + " ";
+			vLineasNomina.push_back(linea);
+			contador = 1;
+			linea = "";
+		}
+	}
+
+	for (int i = 0; i < vLineasNomina.size(); i++) {
+
+		string linea = vLineasNomina[i];
+		for (int j = 0; j < linea.size(); j++) {
+			caracter = linea[j];
+			if (caracter != ' ') {
+				valor = valor + caracter;
+
+			}
+			else {
+
+				if (cont2 == 2) {
+					personas[i].setPagoMensualBruto(stod(valor));
+					//persona.setNombre(valor);//
+					cont2 = 0;
+				}
+				cont2 = cont2 + 1;
+				valor = "";
+			}
+		}
+	
+	}
+	/*cout << endl << endl;
+	cout << "PERSONAS" << endl;
+	for (int z = 0; z < personas.size(); z++) {
+		if (z == 0) {
+			personas[z].setIdEmpleado(1);
+		}
+
+		cout << "ID EMPLEADO: " << personas[z].idEmpleado << endl;
+		cout << "NOMBRE: " << personas[z].nombre << endl;
+		cout << "APELLIDO: " << personas[z].apellido << endl;
+		cout << "CORREO: " << personas[z].correo << endl;
+		cout << "TIPO EMPLEADO: " << personas[z].tipoEmpleado << endl;
+		cout << "ID SUPERVISOR: " << personas[z].idSupervisor << endl;
+		cout << "MONTO BRUTO: " << personas[z].pagoMensualBruto << endl;
+		cout << endl << endl;
+	}
+	*/
+	
+	fe.close();
+
+}
+
+void Persona::actualizarHoras() {
+	int cont3 = 450;
+	string valor;
+	int cont2 = 1;
+	char caracter;
+
+	vector<string>vLineasHoras;
+	string palabra = "";
+	int contador = 1;
+	string linea = "";
+
+	ifstream fe("../Tarea_Programada_2/HorasTrabajadas.txt");
+
+	while (!fe.eof()) {
+		fe >> palabra;
+		if (contador < 3) {
+			linea = linea + palabra + " ";
+			contador = contador + 1;
+		}
+		else if (contador == 3) {
+			linea = linea + palabra + " ";
+			vLineasHoras.push_back(linea);
+			contador = 1;
+			linea = "";
+		}
+	}
+
+	for (int i = 0; i < vLineasHoras.size(); i++) {
+		
+		cout << "contador " << cont3 << endl;
+		string linea = vLineasHoras[i];
+		for (int j = 0; j < linea.size(); j++) {
+			caracter = linea[j];
+			if (caracter != ' ') {
+				valor = valor + caracter;
+
+			}
+			else {
+				
+				if (cont2 == 2) {
+					personas[cont3].setMontoxHora(stod(valor));
+					cout << "PRUEBAAAAAAAAAAA: " << personas[cont3].nombre << endl;
+
+				}
+				else if (cont2 == 3) {
+					personas[cont3].setHorasLaboradas(atoi(valor.c_str()));
+					cont2 = 0;
+				}
+				cont2 = cont2 + 1;
+				valor = "";
 
 			}
 
-
-
 		}
+		cont3 = cont3 + 1;
 
-		personas.push_back(persona);
 	}
-
-
+	
 	cout << endl << endl;
 	cout << "PERSONAS" << endl;
 	for (int z = 0; z < personas.size(); z++) {
@@ -119,6 +263,9 @@ void Persona::obtenerPersona() {
 		cout << "CORREO: " << personas[z].correo << endl;
 		cout << "TIPO EMPLEADO: " << personas[z].tipoEmpleado << endl;
 		cout << "ID SUPERVISOR: " << personas[z].idSupervisor << endl;
+		cout << "MONTO BRUTO: " << personas[z].pagoMensualBruto << endl;
+		cout << "MONTO POR HORA: " << personas[z].montoxHora << endl;
+		cout << "HORAS LABORADAS: " << personas[z].horasLaboradas << endl;
 		cout << endl << endl;
 	}
 

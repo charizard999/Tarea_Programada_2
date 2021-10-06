@@ -17,6 +17,7 @@ private:
 	double pagoMensualBruto;//sin calculo de retencion 
 	double montoxHora;
 	int horasLaboradas;
+	vector<Persona> personas;
 
 public:
 	Persona();
@@ -24,7 +25,9 @@ public:
 		int tipoEmpleado, int idSupervisor, double pagoMensualBruto,
 		double montoxHora, int horasLaboradas);
 
-	void obtenerPersona();
+	void cargarPersona();
+	void actualizarMontoBruto();
+	void actualizarHoras();
 
 	void setIdEmpleado(int idEmpleado);
 	int getIdEmpleado();
