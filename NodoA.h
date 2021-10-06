@@ -20,8 +20,5 @@ public:
 	int getDato();
 	NodoA* getIzq();
 	NodoA* getDer();
-
-
-
 };
 

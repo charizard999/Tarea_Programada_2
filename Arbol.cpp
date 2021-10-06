@@ -12,6 +12,7 @@ NodoA* Arbol::getRaiz() {
 	return this->raiz;
 }
 
+//insertar personas 
 void Arbol::insertar(int dato) {
 	//Inserta el primer nodo
 	if (raiz == NULL) {
