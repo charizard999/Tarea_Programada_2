@@ -18,6 +18,8 @@ private:
 	double montoxHora;
 	int horasLaboradas;
 	vector<Persona> personas;
+	vector<int> supervisores;
+	
 
 public:
 	Persona();
@@ -28,6 +30,7 @@ public:
 	void cargarPersona();
 	void actualizarMontoBruto();
 	void actualizarHoras();
+	void obtenerSupervisores();
 
 	void setIdEmpleado(int idEmpleado);
 	int getIdEmpleado();
@@ -55,4 +58,10 @@ public:
 
 	void setHorasLaboradas(int horasLaboradas);
 	int getHorasLaboradas();
+
+	void setSupervisores(int supervisores);
+	vector<int>getSupervisores();
+
+	void setPersonas(Persona personas);
+	vector<Persona>getPersonas();
 };

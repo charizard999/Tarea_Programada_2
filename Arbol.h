@@ -12,9 +12,9 @@ public:
 	Arbol();
 	void setRaiz(NodoA* raiz);
 	NodoA* getRaiz();
-	void insertar(int dato);
+	void insertar(Persona dato);
 	void verArbol(NodoA* arbol, int n);
-	void eliminar(NodoA* arbol, int dato);
-
+	Persona buscar(NodoA* arbol, int id);
+	void recorrerPersonas(vector<Persona> vectorPersonas);
 };
 

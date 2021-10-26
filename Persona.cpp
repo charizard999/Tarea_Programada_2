@@ -34,7 +34,7 @@ void Persona::cargarPersona() {
 	int cont2 = 1;
 	char caracter;
 
-	ifstream fe("../Tarea_Programada_2/Personas.txt");
+	ifstream fe("../Tarea_Programada_2/PersonasCopy.txt");
 
 	vector<string> vLineas;
 	string palabra;
@@ -221,7 +221,7 @@ void Persona::actualizarHoras() {
 
 	for (int i = 0; i < vLineasHoras.size(); i++) {
 		
-		cout << "contador " << cont3 << endl;
+		//cout << "contador " << cont3 << endl;
 		string linea = vLineasHoras[i];
 		for (int j = 0; j < linea.size(); j++) {
 			caracter = linea[j];
@@ -233,7 +233,7 @@ void Persona::actualizarHoras() {
 				
 				if (cont2 == 2) {
 					personas[cont3].setMontoxHora(stod(valor));
-					cout << "PRUEBAAAAAAAAAAA: " << personas[cont3].nombre << endl;
+					/*cout << "PRUEBAAAAAAAAAAA: " << personas[cont3].nombre << endl;*/
 
 				}
 				else if (cont2 == 3) {
@@ -251,13 +251,13 @@ void Persona::actualizarHoras() {
 	}
 	
 	cout << endl << endl;
-	cout << "PERSONAS" << endl;
+	//cout << "PERSONAS" << endl;
 	for (int z = 0; z < personas.size(); z++) {
 		if (z == 0) {
 			personas[z].setIdEmpleado(1);
 		}
 
-		cout << "ID EMPLEADO: " << personas[z].idEmpleado << endl;
+		/*cout << "ID EMPLEADO: " << personas[z].idEmpleado << endl;
 		cout << "NOMBRE: " << personas[z].nombre << endl;
 		cout << "APELLIDO: " << personas[z].apellido << endl;
 		cout << "CORREO: " << personas[z].correo << endl;
@@ -266,11 +266,17 @@ void Persona::actualizarHoras() {
 		cout << "MONTO BRUTO: " << personas[z].pagoMensualBruto << endl;
 		cout << "MONTO POR HORA: " << personas[z].montoxHora << endl;
 		cout << "HORAS LABORADAS: " << personas[z].horasLaboradas << endl;
-		cout << endl << endl;
+		cout << endl << endl;*/
 	}
 
 	fe.close();
 
+}
+
+void Persona::obtenerSupervisores() {
+	for (int i = 0; i < personas.size(); i++) {
+		supervisores.push_back(personas[i].getIdSupervisoro());
+	}
 }
 	
 
@@ -335,4 +341,20 @@ void Persona::setHorasLaboradas(int horasLaboradas) {
 }
 int Persona::getHorasLaboradas() {
 	return horasLaboradas;
+}
+
+void Persona::setSupervisores(int idSupervisor) {
+	this->supervisores.push_back(idSupervisor);
+}
+
+vector<int> Persona::getSupervisores() {
+	return this->supervisores;
+}
+
+void Persona::setPersonas(Persona personas) {
+	this->personas.push_back(personas);
+}
+
+vector<Persona>  Persona::getPersonas() {
+	return this->personas;
 }

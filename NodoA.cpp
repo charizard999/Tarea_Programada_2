@@ -1,18 +1,18 @@
 #include "NodoA.h"
 
 NodoA::NodoA() {
-	this->dato = 0;
+	this->dato = Persona();
 	this->der = NULL;
 	this->izq = NULL;
 }
 
-NodoA::NodoA(int dato, NodoA* izq, NodoA* der) {
+NodoA::NodoA(Persona dato, NodoA* izq, NodoA* der) {
 	this->dato = dato;
 	this->izq = izq;
 	this->der = der;
 }
 
-void NodoA::setDato(int dato) {
+void NodoA::setDato(Persona dato) {
 	this->dato = dato;
 }
 
@@ -24,7 +24,7 @@ void NodoA::setIzq(NodoA* izq) {
 	this->izq = izq;
 }
 
-int NodoA::getDato() {
+Persona NodoA::getDato() {
 	return this->dato;
 }
 

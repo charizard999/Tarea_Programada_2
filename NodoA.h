@@ -1,5 +1,5 @@
 #pragma once
-
+#include "Persona.h"
 #include <cstddef>
 #include <istream>
 
@@ -7,17 +7,17 @@ using namespace std;
 
 class NodoA {
 private:
-	int dato;
+	Persona dato;
 	NodoA* izq;
 	NodoA* der;
 
 public:
 	NodoA();
-	NodoA(int dato, NodoA* izq, NodoA* der);
-	void setDato(int dato);
+	NodoA(Persona dato, NodoA* izq, NodoA* der);
+	void setDato(Persona dato);
 	void setIzq(NodoA* izq);
 	void setDer(NodoA* der);
-	int getDato();
+	Persona getDato();
 	NodoA* getIzq();
 	NodoA* getDer();
 };

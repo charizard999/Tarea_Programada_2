@@ -1,18 +1,23 @@
 #include "Persona.h"
-#include "Arbol.h"
+#include "Nodo.h"
 
 using namespace std;
 
 int main() {
 
-	Arbol arbol = Arbol();
+	
 	Persona persona =  Persona();
-
+	
 	persona.cargarPersona();
 	persona.actualizarMontoBruto();
 	persona.actualizarHoras();
+	persona.obtenerSupervisores();
+	
+	Nodo* nodo = new Nodo();
+	nodo->agregar(persona);
 
-	//arbol.insertar(persona);
+	nodo->prueba(persona);
+
 	system("pause");
 	return 0;
 }
